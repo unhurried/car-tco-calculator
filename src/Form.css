@@ -1,0 +1,18 @@
+#Form {
+	overflow: hidden;
+	margin-top: -14px;
+	margin-left: -20px;
+}
+
+#Form .FormColumn {
+	float: left;
+}
+
+#Form .InputContainer {
+	height: 74px;
+	margin-left: 20px;
+}
+
+#Form .InputItem {
+	width: 180px !important;
+}

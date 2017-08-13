@@ -1,0 +1,8 @@
+{
+  "short_name": "Car TCO Calcurator",
+  "name": "自動車 TCO（総所有コスト）見積もりツール",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
