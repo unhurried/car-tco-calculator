@@ -24,15 +24,6 @@ class Form extends Component {
 					<div className="InputContainer">
 						<TextField
 							className="InputItem"
-							floatingLabelText="使用予定年数"
-							floatingLabelFixed={true}
-							value={this.props.car.yearsInUse}
-							onChange={this.props.onChange('yearsInUse')} 
-						/>
-					</div>
-					<div className="InputContainer">
-						<TextField
-							className="InputItem"
 							floatingLabelText="価格（万円）"
 							floatingLabelFixed={true}
 							value={this.props.car.price}
@@ -51,23 +42,27 @@ class Form extends Component {
 					<div className="InputContainer">
 						<TextField
 							className="InputItem"
-							floatingLabelText="車検残（ヵ月）"
+							floatingLabelText="使用予定年数"
 							floatingLabelFixed={true}
-							value={this.props.car.remainingTermForInspection}
-							onChange={this.props.onChange('remainingTermForInspection')} 
+							value={this.props.car.yearsInUse}
+							onChange={this.props.onChange('yearsInUse')} 
 						/>
+					</div>
+					<div className="InputContainer">
+						<SelectField
+							className="InputItem"
+							floatingLabelText="保険種類"
+							floatingLabelFixed={true}
+							value={this.props.car.insuranceType} 
+							onChange={this.props.onChange('insuranceType')}
+						>
+							<MenuItem value="economy" primaryText="車両保険なし" />
+							<MenuItem value="normal" primaryText="車対車" />
+							<MenuItem value="premium" primaryText="一般" />
+						</SelectField>
 					</div>
 				</div>
 				<div className="FormColumn">
-					<div className="InputContainer">
-						<TextField
-							className="InputItem"
-							floatingLabelText="年間走行距離（km）"
-							floatingLabelFixed={true}
-							value={this.props.car.annualMileage}
-							onChange={this.props.onChange('annualMileage')} 
-						/>
-					</div>
 					<div className="InputContainer">
 						<SelectField
 							className="InputItem"
@@ -115,17 +110,13 @@ class Form extends Component {
 						/>
 					</div>
 					<div className="InputContainer">
-						<SelectField
+						<TextField
 							className="InputItem"
-							floatingLabelText="保険種類"
+							floatingLabelText="年間走行距離（km）"
 							floatingLabelFixed={true}
-							value={this.props.car.insuranceType} 
-							onChange={this.props.onChange('insuranceType')}
-						>
-							<MenuItem value="economy" primaryText="車両保険なし" />
-							<MenuItem value="normal" primaryText="車対車" />
-							<MenuItem value="premium" primaryText="一般" />
-						</SelectField>
+							value={this.props.car.annualMileage}
+							onChange={this.props.onChange('annualMileage')} 
+						/>
 					</div>
 				</div>
 			</form>

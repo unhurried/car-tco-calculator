@@ -16,7 +16,6 @@ class App extends Component {
 			"weight": "1500",
 			"mileage": "5000",
 			"annualMileage": "10000",
-			"remainingTermForInspection": "1500",
 			"price": "150",
 			"insuranceType": "economy"
 		};
