@@ -2,8 +2,9 @@
 
 自動車の初期コストとランニングコストを試算します。
 
-アプリケーションのURL：https://unhurried.github.io/car-tco-calculator/
-
+* URL
+  * アプリケーション：https://unhurried.github.io/car-tco-calculator/
+  * ソースコード：https://github.com/unhurried/car-tco-calculator/
 * 対応しているラニングコスト
   * 自動車税
   * 重量税
