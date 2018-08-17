@@ -1,69 +1,71 @@
 <template>
-  <b-container id="Result">
-  <b-row>
-    <b-col>
-      <table class="table">
-        <tr>
-          <th scope="row" class="NameColumn">本体価格</th>
-          <td>{{(result.price/10000).toLocaleString()}}万円</td>
-        </tr>
-        <tr>
-          <th scope="row">自動車税</th>
-          <td id="result.carTax">{{result.carTax.total.toLocaleString()}}円</td>
-          <b-popover target="result.carTax" triggers="hover" placement="left">
-		      {{result.carTax.detail}}
-          </b-popover>
-        </tr>
-        <tr>
-          <th scope="row">重量税</th>
-          <td id="result.weightTax">{{result.weightTax.total.toLocaleString()}}円</td>
-          <b-popover target="result.weightTax" triggers="hover" placement="left">
-		      {{result.weightTax.detail}}
-          </b-popover>
-        </tr>
-        <tr>
-          <th scope="row">保険料</th>
-          <td id="result.insurance">{{result.insurance.total.toLocaleString()}}円</td>
-          <b-popover target="result.insurance" triggers="hover" placement="left">
-		      {{result.insurance.detail}}
-          </b-popover>
-        </tr>
-        <tr>
-          <th scope="row">ガソリン</th>
-          <td id="result.gas">{{result.gas.total.toLocaleString()}}円</td>
-          <b-popover target="result.gas" triggers="hover" placement="left">
-		      {{result.gas.detail}}
-          </b-popover>
-        </tr>
-        <tr>
-          <th scope="row">整備費用</th>
-          <td id="result.maintenance">{{result.maintenance.total.toLocaleString()}}円</td>
-          <b-popover target="result.maintenance" triggers="hover" placement="left">
-		      {{result.maintenance.detail}}
-          </b-popover>
-        </tr>
-      </table>
-    </b-col>
-    <b-col>
-      <table class="table">
-        <tbody>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm">
+        <h2>見積結果 (詳細)</h2>
+        <table class="table">
           <tr>
-            <th scope="row">合計</th>
-        <td>{{result.total.toLocaleString()}}円</td>
+            <th scope="row">本体価格</th>
+            <td>{{(result.price/10000).toLocaleString()}}万円</td>
+          </tr>
+          <tr> 
+            <th scope="row">自動車税</th>
+            <td id="car-tax">{{result.carTax.total.toLocaleString()}}円</td>
+            <b-popover target="car-tax" triggers="hover" placement="bottom">
+              {{result.carTax.detail}}
+            </b-popover>
           </tr>
           <tr>
-            <th scope="row">年間</th>
-        <td>{{result.totalPerYear.toLocaleString()}}円</td>
+            <th scope="row">重量税</th>
+            <td id="weight-tax">{{result.weightTax.total.toLocaleString()}}円</td>
+            <b-popover target="weight-tax" triggers="hover" placement="bottom">
+              {{result.weightTax.detail}}
+            </b-popover>
           </tr>
           <tr>
-            <th scope="row">月間</th>
-        <td>{{result.totalPerMonth.toLocaleString()}}円</td>
+            <th scope="row">保険料</th>
+            <td id="insurance">{{result.insurance.total.toLocaleString()}}円</td>
+            <b-popover target="insurance" triggers="hover" placement="bottom">
+              {{result.insurance.detail}}
+            </b-popover>
           </tr>
-        </tbody>
-      </table>
-    </b-col>
-  </b-row>
-  </b-container>
+          <tr>
+            <th scope="row">ガソリン</th>
+            <td id="gas">{{result.gas.total.toLocaleString()}}円</td>
+            <b-popover target="gas" triggers="hover" placement="bottom">
+              {{result.gas.detail}}
+            </b-popover>
+          </tr>
+          <tr>
+            <th scope="row">整備費用</th>
+            <td id="maintenance">{{result.maintenance.total.toLocaleString()}}円</td>
+            <b-popover target="maintenance" triggers="hover" placement="bottom">
+              {{result.maintenance.detail}}
+            </b-popover>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm">
+        <h2>見積結果 (合計)</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">合計</th>
+              <td>{{result.total.toLocaleString()}}円</td>
+            </tr>
+            <tr>
+              <th scope="row">年間</th>
+              <td>{{result.totalPerYear.toLocaleString()}}円</td>
+            </tr>
+            <tr>
+              <th scope="row">月間</th>
+              <td>{{result.totalPerMonth.toLocaleString()}}円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -80,26 +82,22 @@ export default {
 </script>
 
 <style scoped>
-#Result {
-  overflow: hidden;
-}
-
-#Result th {
+table th {
   padding: 16px 0;
   text-align: center;
   font-weight: normal;
 }
 
-#Result tr:first-child th {
+table tr:first-child th {
   border-top: 0;
 }
 
-#Result td {
+table td {
   padding: 16px 0;
-  text-align: right;
+  text-align: center;
 }
 
-#Result tr:first-child td {
+table tr:first-child td {
   border-top: 0;
 }
 </style>
