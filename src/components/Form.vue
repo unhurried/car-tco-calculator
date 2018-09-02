@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2>見積条件</h2>
+        <h2>条件設定</h2>
       </div>
     </div>
     <div class="row">
@@ -10,7 +10,7 @@
         <label for="new-or-used">新車／中古車</label>
         <select id="new-or-used" v-model="newOrUsed" class="form-control">
           <option v-for="option in options.newOrUsed" v-bind:value="option.value" v-bind:key="option.value">
-            {{ option.text }}
+          {{ option.text }}
           </option>
         </select>
       </div>
@@ -18,7 +18,7 @@
         <label for="price">価格（万円）</label>
         <input id="price" v-model="price" type="number" class="form-control">
       </div>
-   </div>
+    </div>
     <div class="row">
       <div class="col-sm">
         <label for="mileage">走行距離（km）</label>
@@ -28,13 +28,13 @@
         <label for="years-in-use">使用予定年数</label>
         <input id="years-in-use" v-model="yearsInUse" type="number" class="form-control">
       </div>
-   </div>
+    </div>
     <div class="row">
       <div class="col-sm">
         <label for="insurance-type">保険種類</label>
         <select id="insurance-type" v-model="insuranceType" class="form-control">
           <option v-for="option in options.insuranceType" v-bind:value="option.value" v-bind:key="option.value">
-            {{ option.text }}
+          {{ option.text }}
           </option>
         </select>
       </div>
@@ -42,17 +42,17 @@
         <label for="cc">排気量（cc）</label>
         <select id="cc" v-model="cc"  class="form-control">
           <option v-for="option in options.cc" v-bind:value="option.value" v-bind:key="option.value">
-            {{ option.text }}
+          {{ option.text }}
           </option>
         </select>
       </div>
     </div>
-   <div class="row">
+    <div class="row">
       <div class="col-sm">
         <label for="weight">車両重量（kg）</label>
         <select id="weight" v-model="weight" class="form-control">
           <option v-for="option in options.weight" v-bind:value="option.value" v-bind:key="option.value">
-            {{ option.text }}
+          {{ option.text }}
           </option>
         </select>
       </div>
@@ -66,6 +66,12 @@
         <label for="annual-mileage">年間走行距離（km）</label>
         <input id="annual-mileage" v-model="annualMileage" type="number" class="form-control">
       </div>
+      <div class="col-sm-6">
+        <label for="config">その他の設定</label>
+        <router-link to="/config">
+          <button class="btn btn-block btn-secondary">詳細設定</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -74,7 +80,7 @@
 import { mapFields } from "vuex-map-fields";
 
 export default {
-  name: "form",
+  name: "Form",
   data: function() {
     return {
       options: {
@@ -129,6 +135,7 @@ export default {
 .container-fluid {
   margin-bottom: 10px;
 }
+
 label {
   margin-top: 10px;
 }

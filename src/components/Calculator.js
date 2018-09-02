@@ -46,24 +46,33 @@ var insuranceTable = {
 };
 
 class Calculator {
-  static exec(car) {
+  static exec(condition) {
     var numberOfInspection = this.NumberOfInspection(
-      car.newOrUsed,
-      car.yearsInUse
+      condition.newOrUsed,
+      condition.yearsInUse
     );
     var result = {
-      price: car.price * 10000,
+      price: condition.price * 10000,
       numberOfInspection: numberOfInspection,
-      carTax: this.CarTax(car.cc, car.yearsInUse),
-      weightTax: this.WeightTax(car.weight, numberOfInspection),
-      gas: this.Gas(car.annualMileage, car.fuelEconomy, car.yearsInUse),
-      maintenance: this.Maintenance(
-        car.annualMileage,
-        car.yearsInUse,
-        numberOfInspection,
-        car.mileage
+      carTax: this.CarTax(condition.cc, condition.yearsInUse),
+      weightTax: this.WeightTax(condition.weight, numberOfInspection),
+      gas: this.Gas(
+        condition.annualMileage,
+        condition.fuelEconomy,
+        condition.yearsInUse,
+        condition.oilPrice
       ),
-      insurance: this.Insurance(car.insuranceType, car.cc, car.yearsInUse)
+      maintenance: this.Maintenance(
+        condition.annualMileage,
+        condition.yearsInUse,
+        numberOfInspection,
+        condition.mileage
+      ),
+      insurance: this.Insurance(
+        condition.insuranceType,
+        condition.cc,
+        condition.yearsInUse
+      )
     };
     result.total =
       result.price +
@@ -72,7 +81,7 @@ class Calculator {
       result.gas.total +
       result.maintenance.total +
       result.insurance.total;
-    result.totalPerYear = Math.round(result.total / car.yearsInUse);
+    result.totalPerYear = Math.round(result.total / condition.yearsInUse);
     result.totalPerMonth = Math.round(result.totalPerYear / 12);
     return result;
   }
@@ -120,12 +129,12 @@ class Calculator {
     return insurance;
   }
 
-  static Gas(annualMileage, fuelEconomy, yearsInUse) {
-    var perYear = Math.round(annualMileage / (fuelEconomy * 0.8)) * 130;
+  static Gas(annualMileage, fuelEconomy, yearsInUse, oilPrice) {
+    var perYear = Math.round(annualMileage / (fuelEconomy * 0.8)) * oilPrice;
     var gas = {
       perYear: perYear,
       total: perYear * yearsInUse,
-      detail: `年間${annualMileage}km / ${fuelEconomy}km/l x 130L/円 x ${yearsInUse}年`
+      detail: `年間${annualMileage}km / ${fuelEconomy}km/l x ${oilPrice}l/円 x ${yearsInUse}年`
     };
     return gas;
   }
