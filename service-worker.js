@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/car-tco-calculator/precache-manifest.33dc318b01476785f89b4d37af0ebcef.js"
+  "/car-tco-calculator/precache-manifest.4f22dc7e160de6e5531e65f076fb2214.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "car-tco-calculator"});
