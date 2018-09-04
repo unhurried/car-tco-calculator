@@ -14,7 +14,8 @@ export default new Vuex.Store({
     mileage: "5000",
     annualMileage: "10000",
     price: "150",
-    insuranceType: "economy"
+    insuranceType: "economy",
+    oilPrice: "150"
   },
   getters: {
     getField

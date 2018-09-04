@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm">
-        <h2>見積結果 (詳細)</h2>
+        <h2>見積もり (詳細)</h2>
         <table class="table">
           <tr>
             <th scope="row">本体価格</th>
@@ -46,7 +46,7 @@
         </table>
       </div>
       <div class="col-sm">
-        <h2>見積結果 (合計)</h2>
+        <h2>見積もり (合計)</h2>
         <table class="table">
           <tbody>
             <tr>
