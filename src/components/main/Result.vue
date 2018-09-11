@@ -5,7 +5,7 @@
         <h2>見積もり (詳細)</h2>
         <table class="table">
           <tr>
-            <th scope="row">本体価格</th>
+            <th scope="row">乗出価格</th>
             <td>{{(result.price/10000).toLocaleString()}}万円</td>
           </tr>
           <tr> 
@@ -75,7 +75,10 @@ export default {
   name: "Result",
   computed: {
     result: function() {
-      return Calculator.exec(this.$store.state);
+      return Calculator.exec(
+        this.$store.state.conditions,
+        this.$store.state.config
+      );
     }
   }
 };
