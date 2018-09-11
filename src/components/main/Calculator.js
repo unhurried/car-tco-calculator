@@ -46,7 +46,7 @@ var insuranceTable = {
 };
 
 class Calculator {
-  static exec(condition) {
+  static exec(condition, config) {
     var numberOfInspection = this.NumberOfInspection(
       condition.newOrUsed,
       condition.yearsInUse
@@ -60,13 +60,14 @@ class Calculator {
         condition.annualMileage,
         condition.fuelEconomy,
         condition.yearsInUse,
-        condition.oilPrice
+        config.others.oilPrice
       ),
       maintenance: this.Maintenance(
         condition.annualMileage,
         condition.yearsInUse,
         numberOfInspection,
-        condition.mileage
+        condition.mileage,
+        config.maintenance
       ),
       insurance: this.Insurance(
         condition.insuranceType,
@@ -139,30 +140,53 @@ class Calculator {
     return gas;
   }
 
-  static Maintenance(annualMileage, yearsInUse, numberOfInspection, mileage) {
+  static Maintenance(
+    annualMileage,
+    yearsInUse,
+    numberOfInspection,
+    mileage,
+    config
+  ) {
     annualMileage = parseInt(annualMileage, 10);
     yearsInUse = parseInt(yearsInUse, 10);
     numberOfInspection = parseInt(numberOfInspection, 10);
     mileage = parseInt(mileage, 10);
 
     var maintenance = {
-      oilChange: 4500 * Math.floor((annualMileage * yearsInUse) / 5000),
-      oilFilter: 2000 * Math.floor((annualMileage * yearsInUse) / 10000),
-      battery: 11000 * Math.floor(yearsInUse / 3),
-      llc: 5500 * numberOfInspection,
-      brakeFluid: 4500 * numberOfInspection,
-      airCleaner:
-        3500 * Math.floor((annualMileage * yearsInUse + mileage) / 40000),
+      oilChange:
+        config.oilChangePrice *
+        Math.floor((annualMileage * yearsInUse) / config.oilChangeMileage),
+      oilFilter:
+        config.oilFilterPrice *
+        Math.floor((annualMileage * yearsInUse) / config.oilFilterMileage),
+      battery:
+        config.batteryPrice * Math.floor(yearsInUse / config.batteryYear),
+      llc: config.llcPrice * Math.floor(yearsInUse / config.llcYear),
+      brakeFluid:
+        config.brakeFluidPrice * Math.floor(yearsInUse / config.brakeFluidYear),
       sparkPlug:
-        5500 * Math.floor((annualMileage * yearsInUse + mileage) / 30000),
-      tire: 50000 * Math.floor((annualMileage * yearsInUse + mileage) / 40000),
+        config.sparkPlugPrice *
+        Math.floor(
+          (annualMileage * yearsInUse + mileage) / config.sparkPlugMileage
+        ),
+      tire:
+        config.tirePrice *
+        Math.floor((annualMileage * yearsInUse + mileage) / config.tireMileage),
       brakePad:
-        17000 * Math.floor((annualMileage * yearsInUse + mileage) / 40000),
+        config.brakePadPrice *
+        Math.floor(
+          (annualMileage * yearsInUse + mileage) / config.brakePadMileage
+        ),
       atFluid:
-        7000 * Math.floor((annualMileage * yearsInUse + mileage) / 50000),
-      airFilter: 2500 * Math.floor(yearsInUse),
-      wiperBrade: 2500 * Math.floor(yearsInUse / 2)
+        config.atFluidPrice *
+        Math.floor(
+          (annualMileage * yearsInUse + mileage) / config.atFluidMileage
+        ),
+      airFilter:
+        config.airFilterPrice * Math.floor(yearsInUse / config.airFilterYear),
+      wiper: config.wiperPrice * Math.floor(yearsInUse / config.wiperYear)
     };
+
     var total = 0;
     Object.keys(maintenance).forEach(key => {
       total += maintenance[key];

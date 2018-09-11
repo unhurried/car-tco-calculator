@@ -38,6 +38,7 @@ nav p {
 
 main {
   max-width: 960px;
+  margin-bottom: 20px;
 }
 
 main h2 {
